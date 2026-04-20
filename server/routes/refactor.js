@@ -3,9 +3,9 @@ import { Router } from 'express'
 const router = Router()
 
 const INTENTS = {
-  readability: 'You are a code clarity expert. Refactor for maximum readability. Use descriptive names and add helpful comments.',
-  performance: 'You are a performance engineer. Refactor for speed. Reduce complexity and add Big-O comments.',
-  minimal: 'You are a minimalist engineer. Remove all unnecessary code and simplify everything.',
+  readability: 'You are a code clarity expert. Refactor for maximum readability. Use descriptive names, JSDoc comments, and clear structure.',
+  performance: 'You are a performance engineer. Refactor for maximum speed. Reduce complexity, minimize loops, add Big-O notation comments.',
+  minimal: 'You are a minimalist engineer. Remove ALL unnecessary code. Make it as short as possible while keeping functionality.',
 }
 
 router.post('/', async (req, res) => {

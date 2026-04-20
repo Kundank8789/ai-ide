@@ -8,7 +8,10 @@ function Editor() {
     <MonacoEditor
       height="100vh"
       defaultLanguage="javascript"
-      value={code}
+      value={code || `// Paste your code here and click Refactor
+function add(a, b) {
+  return a + b
+}`}
       onChange={(val) => setCode(val || '')}
       theme="vs-dark"
       options={{
