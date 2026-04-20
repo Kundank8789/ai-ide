@@ -4,8 +4,10 @@ const router = Router()
 
 const INTENTS = {
   readability: 'You are a code clarity expert. Refactor for maximum readability. Use descriptive names, JSDoc comments, and clear structure.',
-  performance: 'You are a performance engineer. Refactor for maximum speed. Reduce complexity, minimize loops, add Big-O notation comments.',
-  minimal: 'You are a minimalist engineer. Remove ALL unnecessary code. Make it as short as possible while keeping functionality.',
+  performance: 'You are a performance engineer. Refactor for speed. Reduce complexity, minimize loops, add Big-O notation in comments.',
+  security: 'You are a security engineer. Find and fix security vulnerabilities. Check for injection risks, unsafe operations, missing validation, and exposed secrets.',
+  minimal: 'You are a minimalist engineer. Remove ALL unnecessary code. Make it as short as possible while keeping full functionality.',
+  explain: 'You are a senior engineer and teacher. Do NOT rewrite the code. Instead explain exactly what this code does, how it works, what each function does, and what could be improved.',
 }
 
 router.post('/', async (req, res) => {
