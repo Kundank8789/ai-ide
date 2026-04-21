@@ -6,9 +6,19 @@ const LANGUAGES = ['javascript', 'typescript', 'python', 'java', 'cpp', 'go', 'r
 export default function Editor() {
   const { code, setCode, language, setLanguage } = useStore()
 
+  function handleMount(editor) {
+    // sync initial value immediately on mount
+    window.__editorCode = editor.getValue()
+
+    editor.onDidChangeModelContent(() => {
+      const val = editor.getValue()
+      window.__editorCode = val
+      setCode(val)
+    })
+  }
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      {/* Editor toolbar */}
       <div style={{
         display: 'flex',
         alignItems: 'center',
@@ -44,10 +54,7 @@ export default function Editor() {
         height="100%"
         language={language}
         value={code}
-        onChange={(val) => {
-          setCode(val || '')
-          window.__editorCode = val || ''
-        }}
+        onMount={handleMount}
         theme="vs-dark"
         options={{
           fontSize: 14,
@@ -55,8 +62,6 @@ export default function Editor() {
           padding: { top: 12 },
           wordWrap: 'on',
           scrollBeyondLastLine: false,
-          renderLineHighlight: 'line',
-          smoothScrolling: true,
         }}
       />
     </div>

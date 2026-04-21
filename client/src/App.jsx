@@ -11,12 +11,14 @@ function App() {
   const [showFlow, setShowFlow] = useState(false)
   const [flowData, setFlowData] = useState({ nodes: [], edges: [] })
 
-  function handleShowFlow() {
-    const currentCode = window.__editorCode || code
-    const graph = parseCodeToGraph(currentCode)
-    setFlowData(graph)
-    setShowFlow(true)
-  }
+ function handleShowFlow() {
+  const currentCode = window.__editorCode || code
+  console.log('Parsing code length:', currentCode.length)
+  const graph = parseCodeToGraph(currentCode)
+  console.log('Found nodes:', graph.nodes.length, 'edges:', graph.edges.length)
+  setFlowData(graph)
+  setShowFlow(true)
+}
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', background: '#0d0d0d', color: '#fff', fontFamily: 'sans-serif' }}>
